@@ -1,6 +1,7 @@
 import { Provider } from 'next-auth/client';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import 'tailwindcss/tailwind.css'
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (

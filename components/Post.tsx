@@ -1,6 +1,7 @@
 import React from "react";
 import Router from "next/router";
 import ReactMarkdown from "react-markdown";
+import Link from "next/link";
 
 export type PostProps = {
   id: number;
@@ -16,17 +17,13 @@ export type PostProps = {
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {
   const authorName = post.author ? post.author.name : "Unknown author";
   return (
-    <div onClick={() => Router.push("/p/[id]", `/p/${post.id}`)}>
-      <h2>{post.title}</h2>
-      <small>By {authorName}</small>
-      <ReactMarkdown source={post.content} />
-      <style jsx>{`
-        div {
-          color: inherit;
-          padding: 2rem;
-        }
-      `}</style>
-    </div>
+    <Link href='/p/[id]' as={`/p/${post.id}`}>
+      <div className="p-8">
+        <h2 className="text-2xl mb-6 font-bold mt-6">{post.title}</h2>
+        <small className="mb-4 block text-sm">By {authorName}</small>
+        <ReactMarkdown source={post.content} />
+      </div>
+    </Link>
   );
 };
 

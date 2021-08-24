@@ -25,13 +25,14 @@ const Draft: React.FC = () => {
     <Layout>
       <div>
         <form onSubmit={submitData}>
-          <h1>New Draft</h1>
+          <h1 className="text-3xl font-bold mb-10">New Draft</h1>
           <input
             autoFocus
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Title"
             type="text"
             value={title}
+            className="w-full p-2 my-2 rounded border-2 border-gray-300"
           />
           <textarea
             cols={50}
@@ -39,41 +40,14 @@ const Draft: React.FC = () => {
             placeholder="Content"
             rows={8}
             value={content}
+            className="w-full p-2 my-2 rounded border-2 border-gray-300"
           />
-          <input disabled={!content || !title} type="submit" value="Create" />
-          <a className="back" href="#" onClick={() => Router.push('/')}>
+          <input disabled={!content || !title} type="submit" value="Create" className="px-8 py-4 cursor-pointer bg-gray-200" />
+          <a className="ml-4 text-blue-600" href="#" onClick={() => Router.push('/')}>
             or Cancel
           </a>
         </form>
       </div>
-      <style jsx>{`
-        .page {
-          background: white;
-          padding: 3rem;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        input[type='text'],
-        textarea {
-          width: 100%;
-          padding: 0.5rem;
-          margin: 0.5rem 0;
-          border-radius: 0.25rem;
-          border: 0.125rem solid rgba(0, 0, 0, 0.2);
-        }
-
-        input[type='submit'] {
-          background: #ececec;
-          border: 0;
-          padding: 1rem 2rem;
-        }
-
-        .back {
-          margin-left: 1rem;
-        }
-      `}</style>
     </Layout>
   );
 };

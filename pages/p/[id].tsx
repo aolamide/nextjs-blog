@@ -52,39 +52,18 @@ const Post: React.FC<PostProps> = (props) => {
   return (
     <Layout>
       <div>
-        <h2>{title}</h2>
-        <p>By {props?.author?.name || 'Unknown author'}</p>
+        <h2 className="mb-10 mt-8 font-bold text-2xl">{title}</h2>
+        <p className="mb-6">By {props?.author?.name || 'Unknown author'}</p>
         <ReactMarkdown source={props.content} />
         {!props.published && userHasValidSession && postBelongsToUser && (
-          <button onClick={() => publishPost(props.id)}>Publish</button>
+          <button className="py-4 px-8 rounded-sm text-sm mr-4 bg-gray-200 mt-8" onClick={() => publishPost(props.id)}>Publish</button>
         )}
         {
           userHasValidSession && postBelongsToUser && (
-            <button onClick={() => deletePost(props.id)}>Delete</button>
+            <button className="py-4 px-8 rounded-sm text-sm bg-gray-200 mt-8" onClick={() => deletePost(props.id)}>Delete</button>
           )
         }
       </div>
-      <style jsx>{`
-        .page {
-          background: white;
-          padding: 2rem;
-        }
-
-        .actions {
-          margin-top: 2rem;
-        }
-
-        button {
-          background: #ececec;
-          border: 0;
-          border-radius: 0.125rem;
-          padding: 1rem 2rem;
-        }
-
-        button + button {
-          margin-left: 1rem;
-        }
-      `}</style>
     </Layout>
   );
 };
